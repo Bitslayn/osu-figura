@@ -34,9 +34,10 @@ return function(default_model, init, deinit)
 				block_skulls[id] = init(block)
 			end
 
-			last_model = block_skulls[id].model
-			block_skulls[id].render(delta)
-			block_skulls[id].time = world.getTime()
+			local skull = block_skulls[id]
+			last_model = skull.model
+			skull.render(delta)
+			skull.time = world.getTime()
 
 			return
 		end
