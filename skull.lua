@@ -1,12 +1,12 @@
 ---@class osu.skull
 ---@field model ModelPart
 ---@field render fun(delta: number)
+---@field deinit function
 ---@field time integer
 
 ---@param default_model ModelPart
 ---@param init fun(block: BlockState): osu.skull
----@param deinit fun(skull: osu.skull)
-return function(default_model, init, deinit)
+return function(default_model, init)
 	---@type table<integer, osu.skull>
 	local block_skulls = {}
 
@@ -16,7 +16,7 @@ return function(default_model, init, deinit)
 		local expire = world.getTime() - 1
 		for id, skull in next, block_skulls do
 			if skull.time < expire then
-				deinit(skull)
+				block_skulls[id].deinit()
 				block_skulls[id] = nil
 			end
 		end
