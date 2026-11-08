@@ -1,4 +1,6 @@
-return function()
+---@param block BlockState
+---@return osu.skull
+return function(block)
 	local screen = models:newPart("Screen", "Skull")
 
 	local function render(delta)
@@ -9,5 +11,5 @@ return function()
 
 	end
 
-	return {model = screen, render = render, deinit = deinit}
+	return { model = screen, render = render, deinit = deinit }
 end
