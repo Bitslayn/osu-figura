@@ -1,12 +1,19 @@
----@class osu
-local api = {}
+return function(default_model)
+	---@param block BlockState
+	---@return osu.skull
+	local function skull_init(block)
+		return {
+			model = default_model,
+			render = function()
+				
+			end
+		}
+	end
 
----@type osu.skull.vars
-local skull = require("./skull")
+	---@param skull osu.skull
+	local function skull_deinit(skull)
 
----@param part ModelPart
-function api:setDefaultModel(part)
-	skull.default_model = part:copy(""):moveTo(models)
+	end
+
+	require("./skull")(default_model, skull_init, skull_deinit)
 end
-
-return api
