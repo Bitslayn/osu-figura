@@ -26,6 +26,7 @@ return function(default_model, init, deinit)
 	local last_model = default_model
 	function events.skull_render(delta, block)
 		last_model:visible(false)
+		last_model = default_model
 
 		if block then
 			local id = block:getPos():dot(hash)
@@ -38,11 +39,8 @@ return function(default_model, init, deinit)
 			last_model = skull.model
 			skull.render(delta)
 			skull.time = world.getTime()
-
-			return
 		end
 
-		last_model = default_model
 		last_model:visible(true)
 	end
 end
